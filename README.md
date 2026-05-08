@@ -26,6 +26,22 @@ This skill closes that gap. It converts many repo-level reports into one portfol
 - **Faster alignment:** gives leads, architects, and managers a shared synthesis package instead of scattered reports
 - **More practical governance:** keeps standards incremental, reviewable, and grounded in actual repository evidence
 
+## Who this is for
+
+This workflow is a strong fit for:
+
+- engineering leads and architects working across multiple repositories or services
+- teams that already have completed assessments and need portfolio-level decisions
+- standards authors who want evidence-backed candidates instead of opinion-led rules
+- engineering managers who need a clear, non-punitive synthesis of recurring risks and improvement opportunities
+
+Do **not** use this workflow when:
+
+- you only have one obvious issue in one repository
+- you need a direct repository assessment rather than a synthesis of existing assessments
+- your assessment set is incomplete or inconsistent enough that comparison would be misleading
+- the goal is performance evaluation, team ranking, or any other personnel judgment
+
 ## What you get
 
 The skill produces a full synthesis package:
@@ -76,6 +92,18 @@ An easy adoption pattern is:
 
 This keeps the process lightweight while still giving leadership and standards authors something concrete to act on.
 
+## Input quality matters
+
+This workflow is only as strong as the assessment set going into it.
+
+Before you run the skill, make sure:
+
+- each non-empty report includes `Synthesis Input Summary`
+- the assessments are reasonably comparable in scope and depth
+- major findings are tied to evidence rather than broad impressions
+- empty placeholders or unfinished reports have been removed from the working set
+- the reports are detailed enough to separate recurring patterns from isolated issues
+
 ## Important framing
 
 This skill does **not** assess repositories directly. It works from completed assessment reports.
@@ -90,6 +118,16 @@ The outputs are also **not** final standards by default. They are structured dec
 This workflow should also **not** be used to grade engineers, rank teams, or treat repositories as proxies for individual capability. The goal is engineering enablement: identify recurring patterns, clarify where better standards would help, and highlight where the team would benefit from support, examples, coaching, or training.
 
 If the outputs start sounding like a performance review or an indictment of developer skill, the process is being used incorrectly.
+
+## What good output looks like
+
+Strong synthesis output is:
+
+- **evidence-backed:** conclusions trace back to repeated findings in the assessments
+- **narrow enough to act on:** the highest-value standards candidates are clear and limited in number
+- **non-punitive:** the tone points toward support, standards, coaching, and remediation, not blame
+- **teachable:** standards candidates and learning recommendations are grounded in concrete examples
+- **well-classified:** systemic patterns, local remediation, and watch items stay in separate lanes
 
 ## Frequently asked questions
 

@@ -35,6 +35,15 @@ Use the skill when:
 
 If you only need a lightweight standard for one obvious issue in one codebase, drafting it directly may be faster.
 
+## When not to use this workflow
+
+Do not use this workflow when:
+
+- you need a fresh assessment of source code instead of synthesis of completed assessments
+- you only have a single repo issue that is already clear and actionable
+- the assessment set is too uneven to compare fairly
+- the real goal is personnel evaluation, team comparison, or performance management
+
 ## Input structure
 
 ```text
@@ -52,6 +61,17 @@ Each non-empty assessment report should include a `Synthesis Input Summary` sect
 That summary is the normalized starting point for the synthesis. The skill uses it as the primary source, then validates it against the rest of the report.
 
 If a report is non-empty but missing that section, fix the report first instead of asking the skill to infer the missing structure.
+
+## Input quality checklist
+
+Before you run the workflow, confirm:
+
+- each non-empty report includes `Synthesis Input Summary`
+- the reports are complete enough to support comparison
+- findings are tied to evidence, not vague impressions
+- placeholder files and obviously unfinished reports are excluded
+- the review scope is reasonably comparable across repositories
+- the assessment set is large enough to distinguish recurring patterns from one-off issues
 
 ## Prompt options
 
@@ -160,6 +180,18 @@ When reviewing standards candidates, check whether each candidate includes a cle
 - Is the example free of proprietary repository code?
 
 When reviewing learning recommendations, confirm that each recommendation includes a concise before/after example that makes the skill gap teachable.
+
+## What good output looks like
+
+Use this checklist when deciding whether the synthesis package is ready to use:
+
+- major conclusions are supported by repeated evidence
+- standards candidates are few enough to review seriously
+- learning recommendations address skill gaps that are better solved by teaching than policy
+- repository remediation items stay local unless there is clear cross-repository evidence
+- the tone is supportive, specific, and non-punitive
+- examples are concrete enough to teach from
+- leadership-facing summaries are calm, practical, and free of blame
 
 ## Frequently asked questions
 
