@@ -37,12 +37,44 @@ The skill produces a full synthesis package:
 5. repository remediation candidates
 6. executive summary
 
+## A small example
+
+For example, you might start with:
+
+- 3 completed repository assessments
+- repeated evidence of weak domain boundaries in 2 repositories
+- repeated evidence of fragile testing patterns in 2 repositories
+- 1 severe but isolated reliability issue in 1 repository
+
+And end with:
+
+- 2 engineering standards candidates
+- 1 learning recommendation
+- 1 repository-specific remediation item
+- 1 executive summary that explains the portfolio-level picture
+
+That is the core value of the skill: it turns many detailed findings into a smaller, more actionable set of decisions.
+
 ## How it works
 
 1. Put completed repository assessment reports in `assessments/`.
 2. Ensure each report includes a `Synthesis Input Summary` section.
 3. Run the skill to normalize the reports, identify recurring themes, and classify the findings.
 4. Review the generated outputs in sequence before drafting final engineering standards.
+
+## Start small
+
+Treat the first run as a calibration pass, not a mandate to standardize everything.
+
+An easy adoption pattern is:
+
+1. Start with 3-5 assessment reports.
+2. Focus on the top 1-3 standards candidates only.
+3. Keep learning recommendations and remediation items separate from standards work.
+4. Use the first synthesis to align on language, thresholds, and evidence quality.
+5. Expand the scope only after the team trusts the workflow.
+
+This keeps the process lightweight while still giving leadership and standards authors something concrete to act on.
 
 ## Important framing
 
