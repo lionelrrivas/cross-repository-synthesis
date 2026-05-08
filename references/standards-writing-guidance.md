@@ -55,7 +55,7 @@ Turn them into concrete expectations instead.
 
 Each final standard should be teachable through code. Prefer examples that are fictional but familiar to the team.
 
-Use three example types when possible:
+Use three example types for every standard:
 
 1. **Problem example**: demonstrates the common failure mode in a small, recognizable snippet.
 2. **Preferred example**: demonstrates the expected implementation direction.

@@ -8,9 +8,8 @@ Summarize the portfolio-level engineering signal in calm, leadership-appropriate
 
 - Usable reports reviewed:
 - Repository archetypes represented:
-- Current-format reports:
-- Legacy-format reports:
-- Normalization confidence:
+- Reports with `Synthesis Input Summary`:
+- Excluded for missing required summary:
 
 ## Portfolio Rating Distribution
 

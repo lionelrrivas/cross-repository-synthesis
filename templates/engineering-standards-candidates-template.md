@@ -2,9 +2,9 @@
 
 ## Standards Candidate Summary
 
-| Priority | Candidate | Primary risk addressed | Evidence strength | Code example readiness | Recommended status |
+| Priority | Candidate | Primary risk addressed | Evidence strength | Example domain | Recommended status |
 |---:|---|---|---|---|---|
-| 1 | | | Strong / Moderate / Limited | Ready / Needs drafting / Needs discovery | Draft now |
+| 1 | | | Strong / Moderate / Limited | | Draft now |
 
 ## Candidate Standard: `<name>`
 
@@ -24,7 +24,7 @@ Describe the preferred implementation approach in practical terms. Keep the guid
 
 ### Relatable Code Example Plan
 
-Use fictional but realistic examples. Do not copy source code from assessed repositories.
+Use fictional but realistic examples. This section is required for every standards candidate. Do not copy source code from assessed repositories.
 
 #### Example Domain
 

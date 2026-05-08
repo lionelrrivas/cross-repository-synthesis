@@ -28,6 +28,22 @@ Examples:
 
 ### Suggested Exercise
 
+### Before Example
+
+```java
+// Small snippet showing the current weaker implementation pattern.
+```
+
+### After Example
+
+```java
+// Small snippet showing the preferred implementation direction.
+```
+
+### Teaching Point
+
+Explain what changed, why it matters, and how the example supports the learning format.
+
 ### Expected Outcome
 
 ### Follow-Up Artifact

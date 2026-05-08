@@ -5,8 +5,8 @@
 - Reports found:
 - Usable reports:
 - Empty or excluded reports:
-- Current-format reports:
-- Legacy-format reports:
+- Reports with `Synthesis Input Summary`:
+- Excluded for missing required summary:
 
 ## Dimension Rating Distribution
 
@@ -25,8 +25,6 @@
 
 - Primary archetype:
 - Reviewer confidence:
-- Report format: Current / Legacy
-- Normalization confidence: High / Medium / Low
 
 | Dimension | Rating |
 |---|---|

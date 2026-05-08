@@ -1,0 +1,37 @@
+{
+  "skill_name": "cross-repository-engineering-synthesis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have 16 repository assessment reports in the assessments/ directory under /Users/lionelrivas/develop-better/development/cross-repository-synthesis/. These are all current-format reports that include a Synthesis Input Summary section. Use the cross-repository engineering synthesis skill to normalize each report, identify recurring engineering patterns across the portfolio, produce standards candidates with code-example guidance, draft learning recommendations, identify repository-specific remediation candidates, and write an executive summary. Save all output files to /Users/lionelrivas/develop-better/development/cross-repository-synthesis-workspace/iteration-1/full-synthesis-{config}/outputs/ where {config} is replaced by your configuration label.",
+      "expected_output": "Six output files: cross-repository-engineering-findings-synthesis.md, normalized-assessment-summaries.md, engineering-standards-candidates.md, learning-recommendations.md, repository-remediation-candidates.md, synthesis-executive-summary.md — all following the correct templates, with standards candidates containing code-example plans for high-priority items, correct use of risk-pattern taxonomy tags, and improvement-oriented tone throughout.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "all-six-files-present",
+          "description": "All 6 required output files are created and non-empty"
+        },
+        {
+          "id": "standards-have-labeled-code-examples",
+          "description": "Standards candidates include labeled Problem Example, Preferred Example, and Testing Example sections"
+        },
+        {
+          "id": "learning-recs-include-format",
+          "description": "Each learning recommendation specifies a recommended learning format (e.g. workshop, kata, walkthrough)"
+        },
+        {
+          "id": "learning-recs-include-code-examples",
+          "description": "Each learning recommendation includes a before example and an after example"
+        },
+        {
+          "id": "standards-summary-table-present",
+          "description": "The engineering standards candidates file includes a summary table at the top"
+        },
+        {
+          "id": "executive-summary-concise",
+          "description": "The executive summary is concise (under 400 words) and leadership-appropriate"
+        }
+      ]
+    }
+  ]
+}

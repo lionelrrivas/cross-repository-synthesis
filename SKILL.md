@@ -1,7 +1,6 @@
 ---
 name: cross-repository-engineering-synthesis
-description: Synthesize multiple repository assessment reports into portfolio-level engineering findings, standards candidates, and learning recommendations. Use this skill whenever the user has assessment reports, code review findings, or diagnostic reports covering multiple repositories or services and wants to understand recurring patterns, produce team training recommendations, draft engineering standards, or create an executive summary of engineering health across a portfolio. Trigger for phrases like "what patterns show up across our repos", "turn these assessments into standards", "what should the team learn from these reviews", "synthesize our engineering findings", "what keeps coming up across our services", or any request to consolidate findings from multiple repo reviews into actionable guidance — even if the user doesn't say "cross-repository" or "synthesis". Also trigger when the user mentions normalizing legacy-format assessment reports or wants to identify remediation priorities across a set of repositories.
-version: 2
+description: Synthesize multiple repository assessment reports into portfolio-level engineering findings, standards candidates, and learning recommendations. Use this skill whenever the user has assessment reports, code review findings, or diagnostic reports covering multiple repositories or services and wants to understand recurring patterns, produce team training recommendations, draft engineering standards, or create an executive summary of engineering health across a portfolio. Trigger for phrases like "what patterns show up across our repos", "turn these assessments into standards", "what should the team learn from these reviews", "synthesize our engineering findings", "what keeps coming up across our services", or any request to consolidate findings from multiple repo reviews into actionable guidance — even if the user doesn't say "cross-repository" or "synthesis". Also trigger when the user wants to identify remediation priorities across a set of repositories or turn repository assessments into practical standards and learning plans.
 ---
 
 # Cross-Repository Engineering Synthesis Skill
@@ -12,7 +11,7 @@ Use this skill to synthesize multiple repository assessment reports into portfol
 
 This skill does **not** assess source repositories directly. It consumes completed repository assessment reports as evidence. The goal is to identify recurring engineering patterns across repositories and convert those patterns into practical, teachable, evidence-backed guidance.
 
-Version 2 adds explicit support for standards candidates that include relatable code examples. Standards candidates should not remain abstract. When a finding is strong enough to become a standards candidate, the skill should also describe how that standard can be taught with simplified code.
+Standards candidates and learning recommendations should not remain abstract. Every standards candidate should include relatable code examples, and every learning recommendation should include a brief before/after code example so the team can see what better implementation looks like in practice.
 
 ## Core Principle
 
@@ -33,12 +32,11 @@ When a finding does become a standards candidate, treat it as both a governance 
 
 An `assessments/` directory containing Markdown repository assessment reports.
 
-The skill supports two report formats:
-
-1. **Current format** reports that include a `Synthesis Input Summary` section.
-2. **Legacy format** reports that do not include the summary section but do include narrative assessment sections such as repository context, dimension ratings, top recurring engineering risk patterns, likely skill or standards gaps, and candidate engineering standard examples.
+Every usable report must include a `Synthesis Input Summary` section. Treat that section as required input for this skill.
 
 Ignore empty placeholder files.
+
+If a non-empty report is missing `Synthesis Input Summary`, stop and tell the user that the assessment set does not match this skill's required format. Do not infer a normalized summary from narrative-only sections.
 
 ## Required Output
 
@@ -66,8 +64,7 @@ These files provide detailed guidance for specific workflow steps. Read them as 
 | Classifying and prioritizing themes (Steps 5–6) | [`references/prioritization-model.md`](references/prioritization-model.md) |
 | Drafting standards candidates (Steps 8–8a) | [`references/standards-writing-guidance.md`](references/standards-writing-guidance.md) |
 | Drafting learning recommendations (Step 9) | [`references/learning-recommendation-guidance.md`](references/learning-recommendation-guidance.md) |
-| Validating legacy-format normalization | [`examples/legacy-assessment-seed-summary.md`](examples/legacy-assessment-seed-summary.md) |
-| Final quality review | [`examples/synthesis-workflow-checklist.md`](examples/synthesis-workflow-checklist.md) |
+| Final quality review | [`references/synthesis-workflow-checklist.md`](references/synthesis-workflow-checklist.md) |
 
 > Before writing any output, read the **Safety and Tone Rules** section near the end of this skill. Those rules apply throughout the entire synthesis.
 
@@ -82,7 +79,6 @@ Identify:
 - repository names
 - primary archetypes
 - reviewer confidence levels
-- whether each report uses current format or legacy format
 
 If some reports are unreadable, empty, or clearly incomplete, list them separately and exclude them from aggregation.
 
@@ -104,11 +100,10 @@ For each repository, create a normalized summary with:
 - candidate standards
 - learning signals
 - representative evidence references
-- normalization confidence
 
-If the report has a `Synthesis Input Summary`, use it as the primary source. Validate it against the rest of the report.
+Use `Synthesis Input Summary` as the primary source for the normalized summary. Validate it against the rest of the report.
 
-If the report is legacy format, infer the same fields from the narrative. Mark normalization confidence as `High`, `Medium`, or `Low`. See [`references/normalization-rules.md`](references/normalization-rules.md) for detailed inference guidance and confidence criteria. For a worked example of what normalized legacy-report output looks like, see [`examples/legacy-assessment-seed-summary.md`](examples/legacy-assessment-seed-summary.md).
+If the summary conflicts with the narrative, prefer the detailed assessment and call out the inconsistency. See [`references/normalization-rules.md`](references/normalization-rules.md) for detailed extraction and validation guidance.
 
 ### Step 3: Aggregate dimension ratings
 
@@ -196,13 +191,13 @@ For each standards candidate, include:
 - learning support needed
 - drafting priority
 
-Each standards candidate should include enough code-example direction that a final standard can be drafted without inventing the teaching approach later.
+Each standards candidate should include concrete code examples so a final standard can be drafted and taught without inventing the teaching approach later.
 
 Do **not** write standards as academic principles or broad slogans. Write them as practical expectations a development team could apply during design, implementation, and code review.
 
-#### Code example guidance for high-priority candidates
+#### Code example guidance for every standards candidate
 
-For every high-priority standards candidate, include a code-example plan. Prefer simplified, fictional examples that resemble the team's technology stack and problem space without copying internal repository code.
+For every standards candidate, include a code-example plan. Prefer simplified, fictional examples that resemble the team's technology stack and problem space without copying internal repository code.
 
 Use this example structure:
 
@@ -221,7 +216,7 @@ Code examples should:
 - always use **explicit Java types** — never use `var`. Write `CorrespondenceService service = new CorrespondenceService(...)` not `var service = ...`. The team reads and reviews code with explicit types and `var` creates unnecessary friction in teaching material.
 - use **layered architecture patterns** the team recognizes: `@Controller` (or `@RestController`) → `@Service` → `@Repository`. Avoid clean/hexagonal architecture vocabulary (`UseCase`, ports, adapters in the hexagonal sense, domain services) — this would introduce an unfamiliar style that distracts from the teaching point. The goal is to illustrate one engineering improvement clearly, not to advocate for an architectural style the team hasn't adopted.
 
-If the synthesis evidence is strong but the example shape is not obvious, include a placeholder such as `Example to draft: service responsibility boundary using a fictional correspondence workflow` rather than inventing a misleading example.
+If the synthesis evidence is strong but the example shape is not obvious at first, draft a small fictional example anyway. Prefer a simple, teachable example over an omitted example.
 
 ### Step 9: Draft learning recommendations
 
@@ -239,6 +234,8 @@ For each learning recommendation, include:
 - priority
 
 Learning recommendations should be supportive and team-enabling, not remedial or blame-oriented.
+
+Do not omit the before/after code example. The example is part of the recommendation, not an optional add-on.
 
 ### Step 10: Write the executive summary
 
@@ -278,11 +275,12 @@ Before finalizing, verify:
 
 - every major conclusion is supported by assessment evidence
 - standards candidates are based on recurring or high-consequence findings
-- standards candidates include concrete, relatable code-example direction
+- every standards candidate includes concrete, relatable code examples
+- every learning recommendation includes a before/after code example
 - learning recommendations map to observed skill gaps
 - repository-specific findings are not overstated as systemic
 - rating counts match the normalized summaries
 - tone is improvement-oriented
 - output can be shared without causing people to mistake the diagnostic reports for final standards
 
-For a detailed checklist to use during this review, see [`examples/synthesis-workflow-checklist.md`](examples/synthesis-workflow-checklist.md).
+For a detailed checklist to use during this review, see [`references/synthesis-workflow-checklist.md`](references/synthesis-workflow-checklist.md).
