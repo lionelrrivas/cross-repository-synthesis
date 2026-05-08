@@ -1,8 +1,10 @@
 # Normalization Rules
 
-## Current-Format Reports
+## Required Summary Section
 
-When a report contains `## Synthesis Input Summary`, use that section as the primary input.
+Every usable assessment report must contain `## Synthesis Input Summary`.
+
+Use that section as the primary input for normalization.
 
 Still verify consistency with:
 
@@ -14,37 +16,7 @@ Still verify consistency with:
 
 If the summary conflicts with the narrative, prefer the detailed assessment and call out the inconsistency.
 
-## Legacy-Format Reports
-
-When a report does not contain a `Synthesis Input Summary`, infer the normalized summary from these sections:
-
-1. `Repository Context`
-2. `Dimension Assessments`
-3. `Top Recurring Engineering Risk Patterns`
-4. `Likely Underlying Skill or Standards Gaps`
-5. `Recommended Candidate Examples for Engineering Standards`
-6. `Final Notes`
-
-## Normalization Confidence
-
-Use `High` when:
-
-- all dimension ratings are present
-- top risk patterns are explicit
-- skill gaps and standard candidates are present
-- evidence is concrete
-
-Use `Medium` when:
-
-- dimension ratings are present
-- risk patterns are present
-- some standard or learning signals must be inferred
-
-Use `Low` when:
-
-- report sections are missing
-- evidence is vague
-- ratings or repository identity are incomplete
+If a non-empty report is missing that section, stop and tell the user the report is incompatible with this skill's required input format. Do not backfill a summary from narrative-only sections.
 
 ## Risk Tagging Guidance
 

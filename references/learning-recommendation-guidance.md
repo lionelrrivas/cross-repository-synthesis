@@ -2,6 +2,8 @@
 
 Learning recommendations should help the team grow together. They should not sound like remediation for poor performers.
 
+Every learning recommendation should include a small before/after code example. The example makes the learning objective concrete and gives the team a shared artifact to discuss.
+
 ## Recommended Formats
 
 - short workshop
