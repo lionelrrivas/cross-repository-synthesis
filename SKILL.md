@@ -1,13 +1,10 @@
 ---
-version: 2
 name: cross-repository-engineering-synthesis
-description: Synthesize multiple repository assessment reports into portfolio-level engineering findings, standards candidates, and learning recommendations.
-tools: ['create_file', 'read_file', 'list_dir']
+description: Synthesize multiple repository assessment reports into portfolio-level engineering findings, standards candidates, and learning recommendations. Use this skill whenever the user has assessment reports, code review findings, or diagnostic reports covering multiple repositories or services and wants to understand recurring patterns, produce team training recommendations, draft engineering standards, or create an executive summary of engineering health across a portfolio. Trigger for phrases like "what patterns show up across our repos", "turn these assessments into standards", "what should the team learn from these reviews", "synthesize our engineering findings", "what keeps coming up across our services", or any request to consolidate findings from multiple repo reviews into actionable guidance — even if the user doesn't say "cross-repository" or "synthesis". Also trigger when the user mentions normalizing legacy-format assessment reports or wants to identify remediation priorities across a set of repositories.
+version: 2
 ---
 
 # Cross-Repository Engineering Synthesis Skill
-
-Version: 2
 
 ## Purpose
 
@@ -45,16 +42,34 @@ Ignore empty placeholder files.
 
 ## Required Output
 
-Produce a cross-repository synthesis package containing:
+Save all output files into a `synthesis-output/` directory alongside the `assessments/` directory (i.e., as a sibling, not inside it). Create the directory if it does not exist. If the user specifies a different output location, use that instead.
 
-1. `cross-repository-engineering-findings-synthesis.md`
-2. `normalized-assessment-summaries.md`
-3. `engineering-standards-candidates.md`
-4. `learning-recommendations.md`
-5. `repository-remediation-candidates.md`
-6. `synthesis-executive-summary.md`
+Produce a cross-repository synthesis package containing the following files. Use the corresponding template from `templates/` for each unless the user asks for a different format.
 
-Use the templates in `templates/` unless the user asks for a different format.
+1. `synthesis-output/cross-repository-engineering-findings-synthesis.md` → use [`templates/cross-repository-synthesis-template.md`](templates/cross-repository-synthesis-template.md)
+2. `synthesis-output/normalized-assessment-summaries.md` → use [`templates/normalized-assessment-summaries-template.md`](templates/normalized-assessment-summaries-template.md)
+3. `synthesis-output/engineering-standards-candidates.md` → use [`templates/engineering-standards-candidates-template.md`](templates/engineering-standards-candidates-template.md)
+4. `synthesis-output/learning-recommendations.md` → use [`templates/learning-recommendations-template.md`](templates/learning-recommendations-template.md)
+5. `synthesis-output/repository-remediation-candidates.md` → use [`templates/repository-remediation-candidates-template.md`](templates/repository-remediation-candidates-template.md)
+6. `synthesis-output/synthesis-executive-summary.md` → use [`templates/synthesis-executive-summary-template.md`](templates/synthesis-executive-summary-template.md)
+
+After saving, print the path to each file so the user knows exactly where to find them.
+
+## Reference Files
+
+These files provide detailed guidance for specific workflow steps. Read them as needed — do not load all of them upfront.
+
+| When to read | File |
+|---|---|
+| Normalizing reports (Steps 1–2) | [`references/normalization-rules.md`](references/normalization-rules.md) |
+| Grouping themes by engineering concept (Step 4) | [`references/risk-pattern-taxonomy.md`](references/risk-pattern-taxonomy.md) |
+| Classifying and prioritizing themes (Steps 5–6) | [`references/prioritization-model.md`](references/prioritization-model.md) |
+| Drafting standards candidates (Steps 8–8a) | [`references/standards-writing-guidance.md`](references/standards-writing-guidance.md) |
+| Drafting learning recommendations (Step 9) | [`references/learning-recommendation-guidance.md`](references/learning-recommendation-guidance.md) |
+| Validating legacy-format normalization | [`examples/legacy-assessment-seed-summary.md`](examples/legacy-assessment-seed-summary.md) |
+| Final quality review | [`examples/synthesis-workflow-checklist.md`](examples/synthesis-workflow-checklist.md) |
+
+> Before writing any output, read the **Safety and Tone Rules** section near the end of this skill. Those rules apply throughout the entire synthesis.
 
 ## Workflow
 
@@ -93,7 +108,7 @@ For each repository, create a normalized summary with:
 
 If the report has a `Synthesis Input Summary`, use it as the primary source. Validate it against the rest of the report.
 
-If the report is legacy format, infer the same fields from the narrative. Mark normalization confidence as `High`, `Medium`, or `Low`.
+If the report is legacy format, infer the same fields from the narrative. Mark normalization confidence as `High`, `Medium`, or `Low`. See [`references/normalization-rules.md`](references/normalization-rules.md) for detailed inference guidance and confidence criteria. For a worked example of what normalized legacy-report output looks like, see [`examples/legacy-assessment-seed-summary.md`](examples/legacy-assessment-seed-summary.md).
 
 ### Step 3: Aggregate dimension ratings
 
@@ -110,7 +125,7 @@ Do not over-interpret numeric counts. Counts are a signal, not the conclusion.
 
 ### Step 4: Identify recurring engineering themes
 
-Group related findings into recurring themes. Prefer engineering concepts over wording similarity.
+Group related findings into recurring themes. Prefer engineering concepts over wording similarity. Use the canonical pattern tags from [`references/risk-pattern-taxonomy.md`](references/risk-pattern-taxonomy.md) to ensure consistent naming across repositories.
 
 For example, group these together:
 
@@ -135,7 +150,7 @@ Classify each recurring theme as one of:
 
 ### Step 6: Prioritize
 
-Use the prioritization model in `references/prioritization-model.md`.
+Use the prioritization model in [`references/prioritization-model.md`](references/prioritization-model.md).
 
 Prioritize higher when a theme is:
 
@@ -162,6 +177,8 @@ It should answer:
 
 ### Step 8: Draft standards candidates
 
+Read [`references/standards-writing-guidance.md`](references/standards-writing-guidance.md) before drafting. It explains what makes a standard practical versus a slogan, and provides tone guidance and a recommended shape for each standard.
+
 For each standards candidate, include:
 
 - standard name
@@ -183,7 +200,7 @@ Each standards candidate should include enough code-example direction that a fin
 
 Do **not** write standards as academic principles or broad slogans. Write them as practical expectations a development team could apply during design, implementation, and code review.
 
-### Step 8a: Include relatable code-example guidance
+#### Code example guidance for high-priority candidates
 
 For every high-priority standards candidate, include a code-example plan. Prefer simplified, fictional examples that resemble the team's technology stack and problem space without copying internal repository code.
 
@@ -201,10 +218,14 @@ Code examples should:
 - avoid naming real internal systems unless the input reports already make those names safe to use
 - show the engineering consequence, such as easier testing, clearer boundaries, safer failure handling, or stronger domain invariants
 - include comments only when they clarify the teaching point
+- always use **explicit Java types** — never use `var`. Write `CorrespondenceService service = new CorrespondenceService(...)` not `var service = ...`. The team reads and reviews code with explicit types and `var` creates unnecessary friction in teaching material.
+- use **layered architecture patterns** the team recognizes: `@Controller` (or `@RestController`) → `@Service` → `@Repository`. Avoid clean/hexagonal architecture vocabulary (`UseCase`, ports, adapters in the hexagonal sense, domain services) — this would introduce an unfamiliar style that distracts from the teaching point. The goal is to illustrate one engineering improvement clearly, not to advocate for an architectural style the team hasn't adopted.
 
 If the synthesis evidence is strong but the example shape is not obvious, include a placeholder such as `Example to draft: service responsibility boundary using a fictional correspondence workflow` rather than inventing a misleading example.
 
 ### Step 9: Draft learning recommendations
+
+Read [`references/learning-recommendation-guidance.md`](references/learning-recommendation-guidance.md) before drafting. It includes a table matching common engineering patterns to effective learning formats (workshops, katas, walkthroughs, etc.) and guidance on supportive tone.
 
 For each learning recommendation, include:
 
@@ -213,6 +234,7 @@ For each learning recommendation, include:
 - why the learning matters
 - recommended learning format
 - suggested exercise or workshop
+- a brief **before/after code example** that illustrates the skill gap in a small, recognizable snippet — use the same code style rules as standards candidates (explicit types, layered architecture, no `var`)
 - expected outcome
 - priority
 
@@ -262,3 +284,5 @@ Before finalizing, verify:
 - rating counts match the normalized summaries
 - tone is improvement-oriented
 - output can be shared without causing people to mistake the diagnostic reports for final standards
+
+For a detailed checklist to use during this review, see [`examples/synthesis-workflow-checklist.md`](examples/synthesis-workflow-checklist.md).
