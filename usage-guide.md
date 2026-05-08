@@ -78,6 +78,24 @@ The synthesis package includes:
 5. `repository-remediation-candidates.md`
 6. `synthesis-executive-summary.md`
 
+## A small example
+
+Here is a realistic small first pass:
+
+- input: 3 repository assessments
+- recurring pattern: domain logic spread across services in 2 repositories
+- recurring pattern: tests that miss important behavior in 2 repositories
+- isolated issue: one severe batch-processing failure mode in 1 repository
+
+Likely output:
+
+1. 2 standards candidates
+2. 1 learning recommendation
+3. 1 repository-specific remediation item
+4. 1 executive summary for leadership
+
+This is the intended shape of the workflow: reduce many repo-level findings into a smaller set of actions that are easier to review, teach, and prioritize.
+
 ## Recommended review sequence
 
 1. Review `normalized-assessment-summaries.md` first.
@@ -115,6 +133,21 @@ If you worry that this process feels too heavy, use these constraints:
 5. Treat watch items as inputs for later review, not as immediate work.
 
 This keeps the output focused on the few changes most likely to improve engineering quality across the portfolio.
+
+## Start small adoption pattern
+
+If this is your first time using the workflow, do not start with every assessment you have.
+
+Use this rollout pattern instead:
+
+1. Start with 3-5 assessments that are reasonably complete and comparable.
+2. Run the synthesis once as a calibration exercise.
+3. Promote only 1-3 high-confidence standards candidates into active drafting.
+4. Leave the rest as learning recommendations, remediation items, or watch items.
+5. Review whether the output feels evidence-backed, teachable, and narrow enough to act on.
+6. Only then expand to a larger portfolio slice.
+
+This approach reduces churn, keeps review manageable, and builds trust in the workflow before you scale it up.
 
 ## Code example review
 
