@@ -11,6 +11,8 @@ Use this skill to synthesize multiple repository assessment reports into portfol
 
 This skill does **not** assess source repositories directly. It consumes completed repository assessment reports as evidence. The goal is to identify recurring engineering patterns across repositories and convert those patterns into practical, teachable, evidence-backed guidance.
 
+This skill is for engineering enablement and support. Do **not** use it to grade engineers, rank teams, or turn repository findings into personnel judgments about individual capability.
+
 Standards candidates and learning recommendations should not remain abstract. Every standards candidate should include relatable code examples, and every learning recommendation should include a brief before/after code example so the team can see what better implementation looks like in practice.
 
 ## Core Principle
@@ -254,6 +256,7 @@ It should emphasize:
 - Do not name individual developers.
 - Do not describe teams as careless, incompetent, lazy, or irresponsible.
 - Do not imply that a repository owner failed personally.
+- Do not use the synthesis as an HR artifact, performance review, or ranking mechanism for engineers or teams.
 - Do not turn the assessment reports into a giant compliance checklist.
 - Do not recommend rewriting systems unless evidence strongly supports that conclusion.
 - Prefer incremental remediation, standards, and learning paths.
@@ -281,6 +284,8 @@ Before finalizing, verify:
 - repository-specific findings are not overstated as systemic
 - rating counts match the normalized summaries
 - tone is improvement-oriented
+- output cannot reasonably be read as a personnel evaluation or performance-management artifact
+- recommended actions point toward standards, coaching, examples, training, and remediation rather than judgments about people
 - output can be shared without causing people to mistake the diagnostic reports for final standards
 
 For a detailed checklist to use during this review, see [`references/synthesis-workflow-checklist.md`](references/synthesis-workflow-checklist.md).
