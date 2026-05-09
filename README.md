@@ -131,6 +131,12 @@ Strong synthesis output is:
 
 ## Frequently asked questions
 
+### What problem does this solve that a summary doesn't?
+
+A summary tells you what was found. This workflow helps you decide what to **do** about it.
+
+Its value is not just compression. It classifies recurring patterns into standards candidates, learning recommendations, remediation items, and watch items so the organization can choose the right response instead of treating every finding the same way.
+
 ### Why use this tool to create engineering standards?
 
 Because good engineering standards are downstream artifacts, not raw review notes.
@@ -149,21 +155,39 @@ Use direct drafting when you have a single obvious issue or a very small scope.
 
 Use this skill when you have multiple assessment reports and want to avoid inventing standards from incomplete or inconsistent evidence.
 
+### How does it avoid overreacting to isolated findings?
+
+It classifies findings before promoting them into standards.
+
+Repeated, consequential patterns can become standards candidates. Important but local issues stay remediation items. Teachable gaps become learning recommendations. Weak signals remain watch items. That structure is what prevents one noisy repository from turning into a portfolio-wide rule.
+
 ### Are the outputs final engineering standards?
 
 No. The standards output is intentionally framed as **standards candidates** so a team can review, refine, and approve them before publication.
 
-### Can this be used to evaluate or grade engineers?
+### How does it decide what becomes a standard vs a learning recommendation vs remediation?
 
-No.
+It classifies findings based on **pattern, scope, and the kind of response most likely to help**.
 
-This skill is for engineering enablement, not personnel evaluation. It looks for cross-repository patterns so organizations can improve standards, teaching, and support. It should not be used to rank developers, label teams as strong or weak, or turn repository findings into judgments about individual competence.
+Repeated, high-consequence patterns can become **standards candidates**. Recurring issues that are better solved through teaching, examples, or coaching become **learning recommendations**. Important but localized issues stay **repository-specific remediation**. Weak signals remain watch items until there is stronger evidence.
 
-### Why not just ask for a summary of all the reports?
+### What should we publish first: standards, learning recommendations, or remediation work?
 
-A summary is helpful, but it usually stops short of classification and action.
+Start with a **small number of standards** when the evidence is strong and the pattern is broad enough to justify a shared expectation.
 
-This skill goes further by organizing recurring patterns into standards candidates, learning recommendations, remediation items, and executive guidance. That makes it much more useful for engineering leadership and standards authors.
+Publish **learning recommendations alongside those standards** when teams will need examples, coaching, or practice to apply them effectively. Keep **remediation work mostly local** to the repositories where the issue appears, unless the risk is severe enough that leadership needs visibility.
+
+### How do we keep this focused on enablement instead of evaluation?
+
+By treating the workflow as a support tool for engineering systems, not as a judgment tool for people.
+
+This skill is for engineering enablement, not personnel evaluation. It looks for cross-repository patterns so organizations can improve standards, teaching, and support. It should not be used to grade engineers, rank teams, label developers as strong or weak, or turn repository findings into judgments about individual competence.
+
+### How do we know the synthesis is helping over time?
+
+Look for better decisions and fewer repeated portfolio-level patterns, not one magic metric.
+
+The workflow is helping when later assessment rounds show clearer and more teachable standards, more consistent engineering decisions across teams, and fewer recurring cross-repository issues that keep resurfacing in new reviews.
 
 ### Does this replace engineering judgment?
 

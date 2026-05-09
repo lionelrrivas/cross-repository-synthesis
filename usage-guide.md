@@ -127,6 +127,18 @@ This is the intended shape of the workflow: reduce many repo-level findings into
 7. Review `synthesis-executive-summary.md` for leadership framing.
 8. Only then draft final engineering standards.
 
+## How to review a first synthesis
+
+Treat the first synthesis like a calibration exercise, not a final answer.
+
+Use this review pass to check:
+
+1. **Evidence quality:** are the major conclusions traceable to repeated findings in the assessments?
+2. **Classification quality:** do standards candidates, learning recommendations, remediation items, and watch items feel like the right buckets?
+3. **Scope discipline:** is the proposed standards set narrow enough to act on, or is it turning into a giant backlog?
+4. **Teaching value:** do the standards candidates and learning recommendations include examples that would actually help a team improve?
+5. **Tone:** does the package read as supportive and actionable rather than punitive or compliance-driven?
+
 ## Why the synthesis step matters
 
 Do not jump directly from raw assessments to final standards.
@@ -181,7 +193,7 @@ When reviewing standards candidates, check whether each candidate includes a cle
 
 When reviewing learning recommendations, confirm that each recommendation includes a concise before/after example that makes the skill gap teachable.
 
-## What good output looks like
+## How to tell if the output is good
 
 Use this checklist when deciding whether the synthesis package is ready to use:
 
@@ -193,19 +205,42 @@ Use this checklist when deciding whether the synthesis package is ready to use:
 - examples are concrete enough to teach from
 - leadership-facing summaries are calm, practical, and free of blame
 
+## What to publish first
+
+Start by publishing a **small number of high-confidence standards**, not the whole synthesis package as if every output belongs in the same lane.
+
+A good default sequence is:
+
+1. **Publish standards first** when the pattern is recurring, consequential, and clear enough to become a practical team expectation.
+2. **Publish learning recommendations alongside those standards** when teams will need examples, coaching, workshops, or guided practice to apply them well.
+3. **Keep remediation work primarily local** to the affected repositories unless leadership needs visibility into a severe or high-risk issue.
+
+This order helps the organization establish shared expectations first, then support adoption, while avoiding the mistake of turning local cleanup work into portfolio-wide policy.
+
+In practice, that usually means:
+
+- publish only the top 1-3 standards candidates from an initial synthesis
+- pair each standard with learning support when the skill gap is likely to block adoption
+- keep repository-specific remediation in team backlogs, not in the published standards set
+
+The goal is not to publish everything. The goal is to publish the smallest set of guidance that will create the most useful improvement.
+
+## How to know the workflow is helping over time
+
+Do not look for a single success metric. Look for better standards decisions and fewer repeated problems over repeated assessment cycles.
+
+Useful signals include:
+
+- later assessments show fewer recurring cross-repository issues
+- standards candidates become clearer, narrower, and easier to teach
+- teams use more consistent language in reviews and design discussions
+- more issues are addressed through examples, coaching, and learning support before they become standards problems
+- leadership discussions spend less time debating whether a pattern is systemic and more time deciding what action to take
+- the synthesis output becomes easier to review because the evidence quality and classification quality improve over time
+
 ## Frequently asked questions
 
-### Why use this tool to create engineering standards?
-
-Because standards are hard to defend when they are derived directly from one repo, one incident, or one reviewer preference.
-
-This workflow creates a stronger chain from evidence to action. It helps teams standardize the patterns that actually recur, while keeping training needs and local cleanup in the right lanes.
-
-### Isn't there a simpler way to create engineering standards?
-
-Yes: if your scope is small, write the standard directly.
-
-But once you already have multiple assessments, manual comparison is usually the more complicated path. This workflow is the simpler way to turn a pile of diagnostics into a prioritized, reviewable standards backlog.
+For higher-level product and trust questions, see the FAQ in [`README.md`](README.md). This section focuses on practical usage decisions.
 
 ### Is this overkill for a small team?
 
@@ -218,12 +253,6 @@ If the team has only one repo or one obvious engineering problem, go direct. If 
 No. The point is to create a high-quality candidate set, not a giant policy dump.
 
 Most teams should start with a small number of high-leverage candidates and leave the rest for later review.
-
-### Can I use this to grade engineers or compare teams?
-
-No.
-
-That would be the wrong use of the workflow. The synthesis package is meant to support engineering enablement: better standards, better teaching material, and better prioritization. It is not designed to measure individual skill or serve as a performance-management tool.
 
 ### Can I use this even if I am not ready to publish standards?
 
