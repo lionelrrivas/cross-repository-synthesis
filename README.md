@@ -165,6 +165,16 @@ Repeated, consequential patterns can become standards candidates. Important but 
 
 No. The standards output is intentionally framed as **standards candidates** so a team can review, refine, and approve them before publication.
 
+### Can engineering standards be used as Copilot skills or agent instructions?
+
+Sometimes, but usually **only after a standard is mature, approved, and already teachable without relying on Copilot**.
+
+If a standard still depends on learning recommendations, examples, coaching, or practice for engineers to apply it well, translating it into a Copilot skill or agent instruction is usually premature. In those cases, Copilot can support learning, but it should not stand in for understanding or judgment.
+
+When a standard is stable and well understood, Copilot can reinforce it through good defaults, review prompts, or repeatable workflows. But Copilot should not replace engineering judgment, and it should not be treated as the authority on design, correctness, tradeoffs, or exceptions.
+
+In short: **standards guide engineers; Copilot can reinforce them later, but it should not be the mechanism that creates understanding.**
+
 ### How does it decide what becomes a standard vs a learning recommendation vs remediation?
 
 It classifies findings based on **pattern, scope, and the kind of response most likely to help**.
